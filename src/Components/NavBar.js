@@ -9,7 +9,7 @@ const NavBar = () => {
           <img
             src="https://pngimg.com/uploads/pokeball/pokeball_PNG21.png"
             alt="pokeball logo"
-            style={{ height: "50px" }}
+            style={{ height: "50px", width: "50px" }}
           />
         </Link>{" "}
         <Link to="/pokemon">Pokemon</Link>{" "}

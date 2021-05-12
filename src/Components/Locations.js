@@ -11,7 +11,7 @@ class Locations extends Component {
   }
 
   getLocations = async () => {
-    const { data } = axios.get("https://pokeapi.co/api/v2/location");
+    const { data } = await axios.get("https://pokeapi.co/api/v2/location");
     //console.log(data.results.map((loc) => loc.name));
 
     this.setState({
@@ -20,6 +20,7 @@ class Locations extends Component {
   };
 
   handleClick = () => {
+    this.getLocations()
     this.setState({
       showList: !this.state.showList,
     });

@@ -11,11 +11,11 @@ function App() {
       <NavBar />
       <main>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <h1>Welcome to My Pokemon App!</h1>
           </Route>
           <Route path="/berries" component={Berries} />
-          <Route path="/pokemon" component={Pokemon} >
+          <Route path="/pokemon" component={Pokemon} />
           <Route path="/locations" component={Locations} />
         </Switch>
       </main>

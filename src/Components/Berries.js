@@ -16,16 +16,29 @@ class Berries extends Component {
     this.setState({
       selectedValue: e.target.value,
     });
+    
+    try {
+      const { data } = await axios.get(
+        `https://pokeapi.co/api/v2/berry/${e.target.value}`
+      );
 
-    const { data } = await axios.get(
-      `https://pokeapi.co/api/v2/berry/${e.target.value}`
-    );
-
-    console.log(data);
-
-    this.setState({
-      currentBerry: data,
-    });
+      if(this.state.selectedValue !== ""){
+        const firmness = data.firmness.name
+        const name = this.state.selectedValue
+  
+        this.setState({
+         currentBerry: {name, firmness},
+        });
+      } else {
+      this.setState({ 
+        selectedValue: "",
+        currentBerry: {}
+      })
+    }
+    } catch (error) {
+      alert(`error occured: ${error.message}`)
+    }
+     
   };
 
   getBerries = async () => {
@@ -53,7 +66,7 @@ class Berries extends Component {
           <option></option>
           {options}
         </select>
-        {currentBerry.firmness && <BerryCard currentBerry={currentBerry} />}
+        <BerryCard berry={currentBerry} />
       </div>
     );
   }

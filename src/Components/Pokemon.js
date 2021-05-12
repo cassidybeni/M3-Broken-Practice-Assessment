@@ -31,10 +31,12 @@ class Pokemon extends Component {
         searchPokemon: "",
         isError: false,
       });
+      
     } catch (e) {
       this.setState({
         currentPokemon: {},
         searchPokemon: "",
+        isError: true,
       });
     }
   };
@@ -53,7 +55,9 @@ class Pokemon extends Component {
           />
           <button>Submit</button>
         </form>
-        <PokemonCard pokemon={currentPokemon} />
+        {currentPokemon.name ? (
+          <PokemonCard pokemon={currentPokemon} />) : null
+        }
         {isError && <h2>Pokemon not found!</h2>}
       </div>
     );
